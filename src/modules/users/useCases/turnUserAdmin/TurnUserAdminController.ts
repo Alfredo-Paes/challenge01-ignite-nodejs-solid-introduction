@@ -13,9 +13,7 @@ class TurnUserAdminController {
 
       return response.status(200).json(user);
     } catch (error) {
-      return response
-        .status(404)
-        .json({ error: "Is not possible turn user to admin!" });
+      return response.status(404).json({ error: error.message });
     }
   }
 }
