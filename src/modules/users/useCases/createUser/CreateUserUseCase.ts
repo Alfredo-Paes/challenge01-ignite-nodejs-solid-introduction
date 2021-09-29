@@ -17,8 +17,6 @@ class CreateUserUseCase {
 
     const user = this.usersRepository.create({ email, name });
 
-    console.log(user);
-
     return user;
   }
 }
