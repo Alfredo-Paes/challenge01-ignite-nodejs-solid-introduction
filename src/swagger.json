@@ -1,174 +1,89 @@
 {
-    "openapi": "3.0.0",
-    "info":{
-        "title":"Challenge 01 - Introduction to S.O.L.I.D",
-        "description": "First challenge from chapter 2 of, Rocketseat - Ignite, Node JS track. Introduction to S.O.L.I.D concepts.",
-        "version":"1.0.0",
-        "contact": {
-            "email": "alfredo.alfpaes@gmail.com",
-            "url": "https://github.com/Alfredo-Paes"
-        }
-    },
-    "tags":[
-        {
-            "name":"users",
-            "descriptions":"User management"
-        }
-    ],
-    "paths":{
-        "/users":{
-            "post":{
-                "tags":["Users"],
-                "summary": "Create a user",
-                "description": "Create a new user",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type":"string"
-                                    }
-                                },
-                                "example": {
-                                    "name": "Jhon Doe",
-                                    "email": "jhondoes@email.com"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "content": {
-                            "application/json": {
-                              "schema": {
-                                "type": "object",
-                                "properties": {
-                                  "admin": {
-                                    "type": "boolean"
-                                  },
-                                  "id": {
-                                    "type": "string"
-                                  },
+  "openapi": "3.0.0",
+  "info":{
+      "title":"Challenge 01 - Introduction to S.O.L.I.D",
+      "description": "First challenge from chapter 2 of, Rocketseat - Ignite, Node JS track. Introduction to S.O.L.I.D concepts.",
+      "version":"1.0.0",
+      "contact": {
+          "email": "alfredo.alfpaes@gmail.com",
+          "url": "https://github.com/Alfredo-Paes"
+      }
+  },
+  "tags":[
+      {
+          "name":"users",
+          "descriptions":"User management"
+      }
+  ],
+  "paths":{
+      "/users":{
+          "post":{
+              "tags":["Users"],
+              "summary": "Create a user",
+              "description": "Create a new user",
+              "requestBody": {
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
                                   "name": {
-                                    "type": "string"
+                                      "type": "string"
                                   },
                                   "email": {
-                                    "type": "string"
-                                  },
-                                  "created_at": {
-                                    "type": "string"
-                                  },
-                                  "updated_at": {
-                                    "type": "string"
+                                      "type":"string"
                                   }
+                              },
+                              "example": {
+                                  "name": "Jhon Doe",
+                                  "email": "jhondoes@email.com"
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "201": {
+                      "description": "Created",
+                      "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "admin": {
+                                  "type": "boolean"
                                 },
-                                "example": {
-                                    "id": "cee136c9-b429-41bb-abbe-892e1f466681",
-                                    "admin": false,
-                                    "name": "Alfredo",
-                                    "email": "alfredo.alfpaes@gmail.com",
-                                    "created_at": "2021-10-01T02:23:42.486Z",
-                                    "updated_at": "2021-10-01T02:23:42.486Z"
+                                "id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "created_at": {
+                                  "type": "string"
+                                },
+                                "updated_at": {
+                                  "type": "string"
                                 }
+                              },
+                              "example": {
+                                  "id": "cee136c9-b429-41bb-abbe-892e1f466681",
+                                  "admin": false,
+                                  "name": "Alfredo",
+                                  "email": "alfredo.alfpaes@gmail.com",
+                                  "created_at": "2021-10-01T02:23:42.486Z",
+                                  "updated_at": "2021-10-01T02:23:42.486Z"
                               }
                             }
                           }
-                    }, 
-                    "400": {
-                        "description": "Email already exists!",
-                        "content": {
-                            "application/json": {
-                              "schema": {
-                                "type": "object",
-                                "properties": {
-                                  "error": "string"
-                                },
-                                "example": {
-                                  "error": "Email already exists."
-                                }
-                              }
-                            }
-                          }
-                    }
-                }
-            },
-            "get": {
-                "tags":["Users"],
-                "summary": "Get a user",
-                "description": "List all users registred. Only users admin can access.",
-                "parameters":[
-                    {
-                        "in":"header",
-                        "name":"user_id",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
                         }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "admin": {
-                                                "type": "boolean"
-                                            },
-                                            "id": {
-                                                "type": "string"
-                                            },
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "email": {
-                                                "type": "string"
-                                            },
-                                            "created_at": {
-                                                "type": "string"
-                                            },
-                                            "updated_at": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "example":[
-                                            {
-                                                "id": "cee136c9-b429-41bb-abbe-892e1f466681",
-                                                "admin": false,
-                                                "name": "Alfredo",
-                                                "email": "alfredo.alfpaes@gmail.com",
-                                                "created_at": "2021-10-01T02:23:42.486Z",
-                                                "updated_at": "2021-10-01T02:23:42.486Z"
-                                            },
-                                            {
-                                                "id": "d91cff9b-5d98-4d96-9edd-86a964ff5c45",
-                                                "admin": false,
-                                                "name": "Megui",
-                                                "email": "megui.meg@email.com",
-                                                "created_at": "2021-10-01T02:45:39.198Z",
-                                                "updated_at": "2021-10-01T02:45:39.198Z"
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Access denied or User not found.",
-                        "content": {
+                  }, 
+                  "400": {
+                      "description": "Email already exists!",
+                      "content": {
                           "application/json": {
                             "schema": {
                               "type": "object",
@@ -176,110 +91,121 @@
                                 "error": "string"
                               },
                               "example": {
-                                "error": "Only user admin can access."
+                                "error": "Email already exists."
                               }
                             }
                           }
                         }
-                      }
-                }
-            }
-        },
-        "/users/{user_id}":{
-            "get": {
-                "tags":["Users"],
-                "summary": "Get a user by id",
-                "description": "Searches for a specific user by passing his id in as parameter",
-                "parameters":[
-                    {
-                        "in":"path",
-                        "name":"user_id",
-                        "required": true,
-                        "description": "user ID",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                  "type": "object",
-                                  "properties": {
-                                    "admin": {
-                                      "type": "boolean"
-                                    },
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "email": {
-                                      "type": "string"
-                                    },
-                                    "created_at": {
-                                      "type": "string"
-                                    },
-                                    "updated_at": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "example": {
-                                    "id": "d91cff9b-5d98-4d96-9edd-86a964ff5c45",
-                                    "admin": false,
-                                    "name": "Megui",
-                                    "email": "megui.meg@email.com",
-                                    "created_at": "2021-10-01T02:45:39.198Z",
-                                    "updated_at": "2021-10-01T02:45:39.198Z"
-                                  }
-                                }
-                            }
-                        }
-                    },
-                    "404":{
-                        "description":"Profile not found!",
-                        "content": {
-                            "application/json": {
-                              "schema": {
-                                "type": "object",
-                                "properties": {
-                                  "error": "string"
-                                },
-                                "example": {
-                                  "error": "User not found"
-                                }
-                              }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/users/{user_id}/admin": {
-            "patch":{
-                "tags":["Users"],
-                "summary": "Turn user admin",
-                "description": "Change a regular user to admin",
-                "parameters": [
-                    {
-                      "in": "path",
-                      "name": "user_id",
+                  }
+              }
+          },
+          "get": {
+              "tags":["Users"],
+              "summary": "Get a user",
+              "description": "List all users registred. Only users admin can access.",
+              "parameters":[
+                  {
+                      "in":"header",
+                      "name":"user_id",
                       "required": true,
                       "schema": {
-                        "type": "string",
-                        "format": "uuid"
+                          "type": "string",
+                          "format": "uuid"
+                      }
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Ok",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "admin": {
+                                              "type": "boolean"
+                                          },
+                                          "id": {
+                                              "type": "string"
+                                          },
+                                          "name": {
+                                              "type": "string"
+                                          },
+                                          "email": {
+                                              "type": "string"
+                                          },
+                                          "created_at": {
+                                              "type": "string"
+                                          },
+                                          "updated_at": {
+                                              "type": "string"
+                                          }
+                                      },
+                                      "example":[
+                                          {
+                                              "id": "cee136c9-b429-41bb-abbe-892e1f466681",
+                                              "admin": false,
+                                              "name": "Alfredo",
+                                              "email": "alfredo.alfpaes@gmail.com",
+                                              "created_at": "2021-10-01T02:23:42.486Z",
+                                              "updated_at": "2021-10-01T02:23:42.486Z"
+                                          },
+                                          {
+                                              "id": "d91cff9b-5d98-4d96-9edd-86a964ff5c45",
+                                              "admin": false,
+                                              "name": "Megui",
+                                              "email": "megui.meg@email.com",
+                                              "created_at": "2021-10-01T02:45:39.198Z",
+                                              "updated_at": "2021-10-01T02:45:39.198Z"
+                                          }
+                                      ]
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Access denied or User not found.",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "error": "string"
+                            },
+                            "example": {
+                              "error": "Only user admin can access."
+                            }
+                          }
+                        }
                       }
                     }
-                  ],
-                "responses":{
-                    "200":{
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
+              }
+          }
+      },
+      "/users/{user_id}":{
+          "get": {
+              "tags":["Users"],
+              "summary": "Get a user by id",
+              "description": "Searches for a specific user by passing his id in as parameter",
+              "parameters":[
+                  {
+                      "in":"path",
+                      "name":"user_id",
+                      "required": true,
+                      "description": "user ID",
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Ok",
+                      "content": {
+                          "application/json": {
                               "schema": {
                                 "type": "object",
                                 "properties": {
@@ -303,62 +229,109 @@
                                   }
                                 },
                                 "example": {
-                                    "id": "d91cff9b-5d98-4d96-9edd-86a964ff5c45",
-                                    "admin": false,
-                                    "name": "Megui",
-                                    "email": "megui.meg@email.com",
-                                    "created_at": "2021-10-01T02:45:39.198Z",
-                                    "updated_at": "2021-10-01T02:45:39.198Z"
+                                  "id": "d91cff9b-5d98-4d96-9edd-86a964ff5c45",
+                                  "admin": false,
+                                  "name": "Megui",
+                                  "email": "megui.meg@email.com",
+                                  "created_at": "2021-10-01T02:45:39.198Z",
+                                  "updated_at": "2021-10-01T02:45:39.198Z"
                                 }
                               }
+                          }
+                      }
+                  },
+                  "404":{
+                      "description":"Profile not found!",
+                      "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "error": "string"
+                              },
+                              "example": {
+                                "error": "User not found"
+                              }
                             }
-                        }
-                    },
-                    "404":{
-                        "description": "User not Found",
-                        "content": {
-                            "application/json": {
-                              "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "error": "string"
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/users/{user_id}/admin": {
+          "patch":{
+              "tags":["Users"],
+              "summary": "Turn user admin",
+              "description": "Change a regular user to admin",
+              "parameters": [
+                  {
+                    "in": "path",
+                    "name": "user_id",
+                    "required": true,
+                    "schema": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                ],
+              "responses":{
+                  "200":{
+                      "description": "Ok",
+                      "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "admin": {
+                                  "type": "boolean"
                                 },
-                                "example": {
-                                    "error": "User not found"
+                                "id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "created_at": {
+                                  "type": "string"
+                                },
+                                "updated_at": {
+                                  "type": "string"
                                 }
+                              },
+                              "example": {
+                                  "id": "d91cff9b-5d98-4d96-9edd-86a964ff5c45",
+                                  "admin": false,
+                                  "name": "Megui",
+                                  "email": "megui.meg@email.com",
+                                  "created_at": "2021-10-01T02:45:39.198Z",
+                                  "updated_at": "2021-10-01T02:45:39.198Z"
                               }
                             }
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "components": {
-        "schemas": {
-            "User": {
-                "type": "object",
-                "properties": {
-                    "admin": {
-                        "type": "boolean"
-                    },
-                    "id": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "string"
-                    },
-                    "created_at": {
-                        "type": "string"
-                    },
-                    "updated_at": {
-                        "type": "string"
-                    }
-                }
-            }
-        }
-    }
+                          }
+                      }
+                  },
+                  "404":{
+                      "description": "User not Found",
+                      "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "error": "string"
+                              },
+                              "example": {
+                                  "error": "User not found"
+                              }
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
 }
